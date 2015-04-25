@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codac:</strong>
+  <%= @actividad.codac %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @actividad.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @actividad.descripcion %>
+</p>
+
+<p>
+  <strong>Ponderacion:</strong>
+  <%= @actividad.ponderacion %>
+</p>
+
+<p>
+  <strong>Codpr:</strong>
+  <%= @actividad.codpr %>
+</p>
+
+<%= link_to 'Edit', edit_actividad_path(@actividad) %> |
+<%= link_to 'Back', actividads_path %>

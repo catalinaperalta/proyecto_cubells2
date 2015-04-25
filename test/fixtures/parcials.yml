@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codpr: MyString
+  numero: 1
+  calificacion: 1
+  matricula: MyString
+  codma: MyString
+
+two:
+  codpr: MyString
+  numero: 1
+  calificacion: 1
+  matricula: MyString
+  codma: MyString

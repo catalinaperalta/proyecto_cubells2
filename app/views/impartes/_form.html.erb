@@ -1,0 +1,25 @@
+<%= form_for(@imparte) do |f| %>
+  <% if @imparte.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@imparte.errors.count, "error") %> prohibited this imparte from being saved:</h2>
+
+      <ul>
+      <% @imparte.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codma %><br>
+    <%= f.text_field :codma %>
+  </div>
+  <div class="field">
+    <%= f.label :nomina %><br>
+    <%= f.text_field :nomina %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

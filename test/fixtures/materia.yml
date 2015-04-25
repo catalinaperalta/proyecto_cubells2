@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codma: MyString
+  nombre: MyString
+  horas_semanales: 1
+  requerimiento: MyString
+
+two:
+  codma: MyString
+  nombre: MyString
+  horas_semanales: 1
+  requerimiento: MyString

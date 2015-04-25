@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricula: MyString
+  codma: MyString
+  fecha: 2015-04-25
+
+two:
+  matricula: MyString
+  codma: MyString
+  fecha: 2015-04-25

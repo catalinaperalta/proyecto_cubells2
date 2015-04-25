@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Coddr:</strong>
+  <%= @director.coddr %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @director.nombre %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @director.password %>
+</p>
+
+<%= link_to 'Edit', edit_director_path(@director) %> |
+<%= link_to 'Back', directors_path %>

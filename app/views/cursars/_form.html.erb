@@ -1,0 +1,29 @@
+<%= form_for(@cursar) do |f| %>
+  <% if @cursar.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cursar.errors.count, "error") %> prohibited this cursar from being saved:</h2>
+
+      <ul>
+      <% @cursar.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :matricula %><br>
+    <%= f.text_field :matricula %>
+  </div>
+  <div class="field">
+    <%= f.label :codma %><br>
+    <%= f.text_field :codma %>
+  </div>
+  <div class="field">
+    <%= f.label :fecha %><br>
+    <%= f.date_select :fecha %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

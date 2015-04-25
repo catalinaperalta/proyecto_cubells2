@@ -1,0 +1,37 @@
+<%= form_for(@parcial) do |f| %>
+  <% if @parcial.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@parcial.errors.count, "error") %> prohibited this parcial from being saved:</h2>
+
+      <ul>
+      <% @parcial.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codpr %><br>
+    <%= f.text_field :codpr %>
+  </div>
+  <div class="field">
+    <%= f.label :numero %><br>
+    <%= f.number_field :numero %>
+  </div>
+  <div class="field">
+    <%= f.label :calificacion %><br>
+    <%= f.number_field :calificacion %>
+  </div>
+  <div class="field">
+    <%= f.label :matricula %><br>
+    <%= f.text_field :matricula %>
+  </div>
+  <div class="field">
+    <%= f.label :codma %><br>
+    <%= f.text_field :codma %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

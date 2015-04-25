@@ -1,0 +1,29 @@
+<%= form_for(@materia_carrera) do |f| %>
+  <% if @materia_carrera.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@materia_carrera.errors.count, "error") %> prohibited this materia_carrera from being saved:</h2>
+
+      <ul>
+      <% @materia_carrera.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :codma %><br>
+    <%= f.text_field :codma %>
+  </div>
+  <div class="field">
+    <%= f.label :codca %><br>
+    <%= f.text_field :codca %>
+  </div>
+  <div class="field">
+    <%= f.label :semestre %><br>
+    <%= f.number_field :semestre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Cursars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Matricula</th>
+      <th>Codma</th>
+      <th>Fecha</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cursars.each do |cursar| %>
+      <tr>
+        <td><%= cursar.matricula %></td>
+        <td><%= cursar.codma %></td>
+        <td><%= cursar.fecha %></td>
+        <td><%= link_to 'Show', cursar %></td>
+        <td><%= link_to 'Edit', edit_cursar_path(cursar) %></td>
+        <td><%= link_to 'Destroy', cursar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cursar', new_cursar_path %>

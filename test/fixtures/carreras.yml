@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  codca: MyString
+  nombre: MyString
+  siglas: MyString
+  coddr: MyString
+
+two:
+  codca: MyString
+  nombre: MyString
+  siglas: MyString
+  coddr: MyString

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Codma:</strong>
+  <%= @materia_carrera.codma %>
+</p>
+
+<p>
+  <strong>Codca:</strong>
+  <%= @materia_carrera.codca %>
+</p>
+
+<p>
+  <strong>Semestre:</strong>
+  <%= @materia_carrera.semestre %>
+</p>
+
+<%= link_to 'Edit', edit_materia_carrera_path(@materia_carrera) %> |
+<%= link_to 'Back', materia_carreras_path %>

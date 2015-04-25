@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Materia</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Codma</th>
+      <th>Nombre</th>
+      <th>Horas semanales</th>
+      <th>Requerimiento</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materia.each do |materium| %>
+      <tr>
+        <td><%= materium.codma %></td>
+        <td><%= materium.nombre %></td>
+        <td><%= materium.horas_semanales %></td>
+        <td><%= materium.requerimiento %></td>
+        <td><%= link_to 'Show', materium %></td>
+        <td><%= link_to 'Edit', edit_materium_path(materium) %></td>
+        <td><%= link_to 'Destroy', materium, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materium', new_materium_path %>
