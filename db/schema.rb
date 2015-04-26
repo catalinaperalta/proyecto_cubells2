@@ -11,12 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425224903) do
+ActiveRecord::Schema.define(version: 20150426024349) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "actividads", id: false, force: :cascade do |t|
+  create_table "actividads", force: :cascade do |t|
     t.string  "codac",       limit: 4,  null: false
     t.string  "nombre",      limit: 20, null: false
     t.string  "descripcion", limit: 50
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150425224903) do
     t.integer "id_parcial"
   end
 
-  create_table "alumnos", id: false, force: :cascade do |t|
+  create_table "alumnos", force: :cascade do |t|
     t.string  "matricula",     limit: 9,                    null: false
     t.string  "nombre",        limit: 25,                   null: false
     t.string  "apellido_p",    limit: 20,                   null: false
@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20150425224903) do
     t.integer "id_carrera"
   end
 
-  create_table "carreras", id: false, force: :cascade do |t|
+  create_table "carreras", force: :cascade do |t|
     t.string  "codca",       limit: 4,  null: false
     t.string  "nombre",      limit: 30, null: false
     t.string  "siglas",      limit: 4
@@ -45,13 +45,7 @@ ActiveRecord::Schema.define(version: 20150425224903) do
     t.integer "id_director"
   end
 
-  create_table "cursars", id: false, force: :cascade do |t|
-    t.string "matricula", limit: 9, null: false
-    t.string "codma",     limit: 4, null: false
-    t.date   "fecha"
-  end
-
-  create_table "directors", id: false, force: :cascade do |t|
+  create_table "directors", force: :cascade do |t|
     t.string "coddr",    limit: 4,                    null: false
     t.string "nombre",   limit: 25
     t.string "password", limit: 15, default: "12345", null: false
@@ -89,14 +83,14 @@ ActiveRecord::Schema.define(version: 20150425224903) do
   add_index "materia_profesors", ["materia_id"], name: "index_materia_profesors_on_materia_id", using: :btree
   add_index "materia_profesors", ["profesor_id"], name: "index_materia_profesors_on_profesor_id", using: :btree
 
-  create_table "materias", id: false, force: :cascade do |t|
+  create_table "materias", force: :cascade do |t|
     t.string  "codma",           limit: 4,  null: false
     t.string  "nombre",          limit: 50, null: false
     t.integer "horas_semanales"
     t.string  "requerimiento",   limit: 4
   end
 
-  create_table "parcials", id: false, force: :cascade do |t|
+  create_table "parcials", force: :cascade do |t|
     t.string  "codpr",             limit: 4, null: false
     t.integer "numero",                      null: false
     t.integer "calificacion"
@@ -105,7 +99,7 @@ ActiveRecord::Schema.define(version: 20150425224903) do
     t.integer "id_materia_alumno"
   end
 
-  create_table "profesors", id: false, force: :cascade do |t|
+  create_table "profesors", force: :cascade do |t|
     t.string "nomina",   limit: 9,                    null: false
     t.string "nombre",   limit: 25,                   null: false
     t.string "apellido", limit: 20,                   null: false
