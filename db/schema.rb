@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426024349) do
+ActiveRecord::Schema.define(version: 20150426182740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,6 +43,13 @@ ActiveRecord::Schema.define(version: 20150426024349) do
     t.string  "siglas",      limit: 4
     t.string  "coddr",       limit: 4,  null: false
     t.integer "id_director"
+  end
+
+  create_table "cursos", force: :cascade do |t|
+    t.string  "codma",           limit: 4,  null: false
+    t.string  "nombre",          limit: 50, null: false
+    t.integer "horas_semanales"
+    t.string  "requerimiento",   limit: 4
   end
 
   create_table "directors", force: :cascade do |t|
@@ -82,13 +89,6 @@ ActiveRecord::Schema.define(version: 20150426024349) do
 
   add_index "materia_profesors", ["materia_id"], name: "index_materia_profesors_on_materia_id", using: :btree
   add_index "materia_profesors", ["profesor_id"], name: "index_materia_profesors_on_profesor_id", using: :btree
-
-  create_table "materias", force: :cascade do |t|
-    t.string  "codma",           limit: 4,  null: false
-    t.string  "nombre",          limit: 50, null: false
-    t.integer "horas_semanales"
-    t.string  "requerimiento",   limit: 4
-  end
 
   create_table "parcials", force: :cascade do |t|
     t.string  "codpr",             limit: 4, null: false

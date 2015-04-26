@@ -69,6 +69,6 @@ class MateriaCarrerasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def materia_carrera_params
-      params.require(:materia_carrera).permit(:codma, :codca, :semestre)
+      params.require(:materia_carrera).permit(:materia_id, :carrera_id, :semestre)
     end
 end

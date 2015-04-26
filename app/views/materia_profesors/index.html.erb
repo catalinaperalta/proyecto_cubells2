@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Materia Profesors</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Materia</th>
+      <th>Profesor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @materia_profesors.each do |materia_profesor| %>
+      <tr>
+        <td><%= materia_profesor.materia %></td>
+        <td><%= materia_profesor.profesor %></td>
+        <td><%= link_to 'Show', materia_profesor %></td>
+        <td><%= link_to 'Edit', edit_materia_profesor_path(materia_profesor) %></td>
+        <td><%= link_to 'Destroy', materia_profesor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Materia profesor', new_materia_profesor_path %>

@@ -1,7 +1,7 @@
 class AlumnosController < ApplicationController
   before_action :set_alumno, only: [:show, :edit, :update, :destroy]
 
-  GET /alumnos
+  # GET /alumnos
   # GET /alumnos.json
   def index
     @alumnos = Alumno.all
@@ -69,6 +69,6 @@ class AlumnosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def alumno_params
-      params.require(:alumno).permit(:matricula, :nombre, :apellido_p, :apellido_m, :edad, :fecha_ingreso, :password, :codca)
+      params[:alumno]
     end
 end

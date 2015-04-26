@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  materia_id: 
+  alumno_id: 
+  fecha: 2015-04-25
+
+two:
+  materia_id: 
+  alumno_id: 
+  fecha: 2015-04-25

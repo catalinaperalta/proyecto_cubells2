@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  codma: MyString
-  codca: MyString
+  materia_id: 
+  carrera_id: 
   semestre: 1
 
 two:
-  codma: MyString
-  codca: MyString
+  materia_id: 
+  carrera_id: 
   semestre: 1

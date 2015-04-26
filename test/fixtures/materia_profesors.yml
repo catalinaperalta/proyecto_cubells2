@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  materia_id: 
+  profesor_id: 
+
+two:
+  materia_id: 
+  profesor_id: 

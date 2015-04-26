@@ -18,7 +18,7 @@ class MateriaCarrerasControllerTest < ActionController::TestCase
 
   test "should create materia_carrera" do
     assert_difference('MateriaCarrera.count') do
-      post :create, materia_carrera: { codca: @materia_carrera.codca, codma: @materia_carrera.codma, semestre: @materia_carrera.semestre }
+      post :create, materia_carrera: { carrera_id: @materia_carrera.carrera_id, materia_id: @materia_carrera.materia_id, semestre: @materia_carrera.semestre }
     end
 
     assert_redirected_to materia_carrera_path(assigns(:materia_carrera))
@@ -35,7 +35,7 @@ class MateriaCarrerasControllerTest < ActionController::TestCase
   end
 
   test "should update materia_carrera" do
-    patch :update, id: @materia_carrera, materia_carrera: { codca: @materia_carrera.codca, codma: @materia_carrera.codma, semestre: @materia_carrera.semestre }
+    patch :update, id: @materia_carrera, materia_carrera: { carrera_id: @materia_carrera.carrera_id, materia_id: @materia_carrera.materia_id, semestre: @materia_carrera.semestre }
     assert_redirected_to materia_carrera_path(assigns(:materia_carrera))
   end
 
