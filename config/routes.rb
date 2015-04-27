@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'alumnos#index'
+  root 'alumnos#homepage'
 
   resources :cursos
 
