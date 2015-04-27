@@ -11,18 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426205507) do
+ActiveRecord::Schema.define(version: 20150427183348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "actividads", force: :cascade do |t|
-    t.string  "codac",       limit: 4,  null: false
-    t.string  "nombre",      limit: 20, null: false
-    t.string  "descripcion", limit: 50
-    t.integer "ponderacion",            null: false
-    t.string  "codpr",       limit: 4,  null: false
+    t.string  "nombre",       limit: 20, null: false
+    t.string  "descripcion",  limit: 50
+    t.integer "ponderacion",             null: false
     t.integer "id_parcial"
+    t.integer "calificacion"
   end
 
   create_table "alumnos", force: :cascade do |t|
@@ -33,15 +32,12 @@ ActiveRecord::Schema.define(version: 20150426205507) do
     t.integer "edad",                                       null: false
     t.date    "fecha_ingreso",                              null: false
     t.string  "password",      limit: 15, default: "12345", null: false
-    t.string  "codca",         limit: 4,                    null: false
     t.integer "id_carrera"
   end
 
   create_table "carreras", force: :cascade do |t|
-    t.string  "codca",       limit: 4,  null: false
     t.string  "nombre",      limit: 30, null: false
     t.string  "siglas",      limit: 4
-    t.string  "coddr",       limit: 4,  null: false
     t.integer "id_director"
   end
 
@@ -91,11 +87,8 @@ ActiveRecord::Schema.define(version: 20150426205507) do
   add_index "materia_profesors", ["profesor_id"], name: "index_materia_profesors_on_profesor_id", using: :btree
 
   create_table "parcials", force: :cascade do |t|
-    t.string  "codpr",             limit: 4, null: false
-    t.integer "numero",                      null: false
+    t.integer "numero",            null: false
     t.integer "calificacion"
-    t.string  "matricula",         limit: 9, null: false
-    t.string  "codma",             limit: 4, null: false
     t.integer "id_materia_alumno"
   end
 
@@ -106,4 +99,14 @@ ActiveRecord::Schema.define(version: 20150426205507) do
     t.string "password", limit: 15, default: "12345", null: false
   end
 
+  add_foreign_key "actividads", "parcials", column: "id_parcial"
+  add_foreign_key "alumnos", "carreras", column: "id_carrera"
+  add_foreign_key "carreras", "directors", column: "id_director"
+  add_foreign_key "materia_alumnos", "alumnos"
+  add_foreign_key "materia_alumnos", "cursos", column: "materia_id"
+  add_foreign_key "materia_carreras", "carreras"
+  add_foreign_key "materia_carreras", "cursos", column: "materia_id"
+  add_foreign_key "materia_profesors", "cursos", column: "materia_id"
+  add_foreign_key "materia_profesors", "profesors"
+  add_foreign_key "parcials", "materia_alumnos", column: "id_materia_alumno"
 end
