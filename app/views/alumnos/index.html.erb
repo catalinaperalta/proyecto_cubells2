@@ -12,14 +12,20 @@
   <tbody>
     <% @alumnos.each do |alumno| %>
       <tr>
+        <td><%= alumno.nombre %></td>
         <td><%= link_to 'Show', alumno %></td>
         <td><%= link_to 'Edit', edit_alumno_path(alumno) %></td>
         <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
+     
 </table>
 
+<% @materias.each do |materia| %>
+      <%= materia.nombre %>
+      <%= materia.matricula %>
+<% end %>
 <br>
 
 <%= link_to 'New Alumno', new_alumno_path %>

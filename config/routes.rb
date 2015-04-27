@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+
+  root 'alumnos#index'
+
+  resources :cursos
+
+  resources :materia_profesors
+
+  resources :alumnos
+
+  resources :materia_alumnos
+
   resources :profesors
 
   resources :parcials
@@ -14,8 +25,6 @@ Rails.application.routes.draw do
   resources :cursars
 
   resources :carreras
-
-  resources :alumnos
 
   resources :actividads
 
