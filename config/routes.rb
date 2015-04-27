@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'alumnos#homepage'
-  get '/materiasAlumno.html.erb', to: 'alumnos#materiasAlumno'
+  get 'materiasAlumno' => 'alumnos#materiasAlumno'
 
   resources :cursos
 
