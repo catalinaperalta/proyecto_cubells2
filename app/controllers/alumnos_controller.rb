@@ -11,12 +11,15 @@ class AlumnosController < ApplicationController
   # GET /alumnos/1
   # GET /alumnos/1.json
   def show
+        @materias = Curso.select("cursos.*, profesors.nombre as profesor").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
+        @alumno = Alumno.find(params[:id])
   end
 
   def homepage
   #  @user = Alumno.find_by(matricula: params[:matricula])
   #  @materias = Curso.select("cursos.nombre, alumnos.matricula, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
-    @materias = Curso.select("cursos.nombre as curso, alumnos.matricula, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
+    @materias = Curso.select(cursos.*).joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN (SELECT id from alumnos) ON alumnos.id = materia_alumnos.alumno_id");
+
   end
 
   def materiasAlumno
