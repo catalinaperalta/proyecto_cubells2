@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
   				redirect_to user
   			end
   		else
-  			user = Profesor.find_by(matricula: params[:session][:usuario].downcase)
+  			user = Profesor.find_by(nomina: params[:session][:usuario].downcase)
   			if user
   				if user.password == params[:session][:password]
   					log_in user

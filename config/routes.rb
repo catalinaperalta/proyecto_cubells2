@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   get 'sessions/new'
 
-  root 'alumnos#homepage'
+  root 'sessions#new'
   get 'materiasAlumno' => 'alumnos#materiasAlumno'
 
   get 'login' => 'sessions#new'
