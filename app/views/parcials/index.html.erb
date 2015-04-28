@@ -5,11 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Codpr</th>
       <th>Numero</th>
       <th>Calificacion</th>
-      <th>Matricula</th>
-      <th>Codma</th>
+      <th>Id materia alumno</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,11 +15,9 @@
   <tbody>
     <% @parcials.each do |parcial| %>
       <tr>
-        <td><%= parcial.codpr %></td>
         <td><%= parcial.numero %></td>
         <td><%= parcial.calificacion %></td>
-        <td><%= parcial.matricula %></td>
-        <td><%= parcial.codma %></td>
+        <td><%= parcial.id_materia_alumno %></td>
         <td><%= link_to 'Show', parcial %></td>
         <td><%= link_to 'Edit', edit_parcial_path(parcial) %></td>
         <td><%= link_to 'Destroy', parcial, method: :delete, data: { confirm: 'Are you sure?' } %></td>

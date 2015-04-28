@@ -18,7 +18,7 @@ class ParcialsControllerTest < ActionController::TestCase
 
   test "should create parcial" do
     assert_difference('Parcial.count') do
-      post :create, parcial: { calificacion: @parcial.calificacion, codma: @parcial.codma, codpr: @parcial.codpr, matricula: @parcial.matricula, numero: @parcial.numero }
+      post :create, parcial: { calificacion: @parcial.calificacion, id_materia_alumno: @parcial.id_materia_alumno, numero: @parcial.numero }
     end
 
     assert_redirected_to parcial_path(assigns(:parcial))
@@ -35,7 +35,7 @@ class ParcialsControllerTest < ActionController::TestCase
   end
 
   test "should update parcial" do
-    patch :update, id: @parcial, parcial: { calificacion: @parcial.calificacion, codma: @parcial.codma, codpr: @parcial.codpr, matricula: @parcial.matricula, numero: @parcial.numero }
+    patch :update, id: @parcial, parcial: { calificacion: @parcial.calificacion, id_materia_alumno: @parcial.id_materia_alumno, numero: @parcial.numero }
     assert_redirected_to parcial_path(assigns(:parcial))
   end
 

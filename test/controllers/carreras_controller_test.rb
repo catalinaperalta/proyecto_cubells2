@@ -18,7 +18,7 @@ class CarrerasControllerTest < ActionController::TestCase
 
   test "should create carrera" do
     assert_difference('Carrera.count') do
-      post :create, carrera: { codca: @carrera.codca, coddr: @carrera.coddr, nombre: @carrera.nombre, siglas: @carrera.siglas }
+      post :create, carrera: { id_director: @carrera.id_director, nombre: @carrera.nombre, siglas: @carrera.siglas }
     end
 
     assert_redirected_to carrera_path(assigns(:carrera))
@@ -35,7 +35,7 @@ class CarrerasControllerTest < ActionController::TestCase
   end
 
   test "should update carrera" do
-    patch :update, id: @carrera, carrera: { codca: @carrera.codca, coddr: @carrera.coddr, nombre: @carrera.nombre, siglas: @carrera.siglas }
+    patch :update, id: @carrera, carrera: { id_director: @carrera.id_director, nombre: @carrera.nombre, siglas: @carrera.siglas }
     assert_redirected_to carrera_path(assigns(:carrera))
   end
 

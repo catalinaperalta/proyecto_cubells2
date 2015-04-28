@@ -5,6 +5,10 @@
 <table>
   <thead>
     <tr>
+      <th>Codma</th>
+      <th>Nombre</th>
+      <th>Horas semanales</th>
+      <th>Requerimiento</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,6 +16,10 @@
   <tbody>
     <% @cursos.each do |curso| %>
       <tr>
+        <td><%= curso.codma %></td>
+        <td><%= curso.nombre %></td>
+        <td><%= curso.horas_semanales %></td>
+        <td><%= curso.requerimiento %></td>
         <td><%= link_to 'Show', curso %></td>
         <td><%= link_to 'Edit', edit_curso_path(curso) %></td>
         <td><%= link_to 'Destroy', curso, method: :delete, data: { confirm: 'Are you sure?' } %></td>

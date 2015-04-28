@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :codca %><br>
-    <%= f.text_field :codca %>
-  </div>
-  <div class="field">
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
@@ -24,8 +20,8 @@
     <%= f.text_field :siglas %>
   </div>
   <div class="field">
-    <%= f.label :coddr %><br>
-    <%= f.text_field :coddr %>
+    <%= f.label :id_director %><br>
+    <%= f.number_field :id_director %>
   </div>
   <div class="actions">
     <%= f.submit %>

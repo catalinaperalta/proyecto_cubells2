@@ -1,4 +1,4 @@
 json.array!(@parcials) do |parcial|
-  json.extract! parcial, :id, :codpr, :numero, :calificacion, :matricula, :codma
+  json.extract! parcial, :id, :numero, :calificacion, :id_materia_alumno
   json.url parcial_url(parcial, format: :json)
 end

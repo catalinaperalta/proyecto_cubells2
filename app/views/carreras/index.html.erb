@@ -5,10 +5,9 @@
 <table>
   <thead>
     <tr>
-      <th>Codca</th>
       <th>Nombre</th>
       <th>Siglas</th>
-      <th>Coddr</th>
+      <th>Id director</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +15,9 @@
   <tbody>
     <% @carreras.each do |carrera| %>
       <tr>
-        <td><%= carrera.codca %></td>
         <td><%= carrera.nombre %></td>
         <td><%= carrera.siglas %></td>
-        <td><%= carrera.coddr %></td>
+        <td><%= carrera.id_director %></td>
         <td><%= link_to 'Show', carrera %></td>
         <td><%= link_to 'Edit', edit_carrera_path(carrera) %></td>
         <td><%= link_to 'Destroy', carrera, method: :delete, data: { confirm: 'Are you sure?' } %></td>

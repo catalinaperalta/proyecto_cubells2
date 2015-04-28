@@ -5,6 +5,14 @@
 <table>
   <thead>
     <tr>
+      <th>Matricula</th>
+      <th>Nombre</th>
+      <th>Apellido p</th>
+      <th>Apellido m</th>
+      <th>Edad</th>
+      <th>Fecha ingreso</th>
+      <th>Password</th>
+      <th>Id carrera</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,20 +20,22 @@
   <tbody>
     <% @alumnos.each do |alumno| %>
       <tr>
+        <td><%= alumno.matricula %></td>
         <td><%= alumno.nombre %></td>
+        <td><%= alumno.apellido_p %></td>
+        <td><%= alumno.apellido_m %></td>
+        <td><%= alumno.edad %></td>
+        <td><%= alumno.fecha_ingreso %></td>
+        <td><%= alumno.password %></td>
+        <td><%= alumno.id_carrera %></td>
         <td><%= link_to 'Show', alumno %></td>
         <td><%= link_to 'Edit', edit_alumno_path(alumno) %></td>
         <td><%= link_to 'Destroy', alumno, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
-     
 </table>
 
-<% @materias.each do |materia| %>
-      <%= materia.nombre %>
-      <%= materia.matricula %>
-<% end %>
 <br>
 
 <%= link_to 'New Alumno', new_alumno_path %>

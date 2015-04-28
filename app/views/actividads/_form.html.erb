@@ -12,10 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :codac %><br>
-    <%= f.text_field :codac %>
-  </div>
-  <div class="field">
     <%= f.label :nombre %><br>
     <%= f.text_field :nombre %>
   </div>
@@ -28,8 +24,12 @@
     <%= f.number_field :ponderacion %>
   </div>
   <div class="field">
-    <%= f.label :codpr %><br>
-    <%= f.text_field :codpr %>
+    <%= f.label :id_parcial %><br>
+    <%= f.number_field :id_parcial %>
+  </div>
+  <div class="field">
+    <%= f.label :calificacion %><br>
+    <%= f.number_field :calificacion %>
   </div>
   <div class="actions">
     <%= f.submit %>

@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Codac:</strong>
-  <%= @actividad.codac %>
-</p>
-
-<p>
   <strong>Nombre:</strong>
   <%= @actividad.nombre %>
 </p>
@@ -21,8 +16,13 @@
 </p>
 
 <p>
-  <strong>Codpr:</strong>
-  <%= @actividad.codpr %>
+  <strong>Id parcial:</strong>
+  <%= @actividad.id_parcial %>
+</p>
+
+<p>
+  <strong>Calificacion:</strong>
+  <%= @actividad.calificacion %>
 </p>
 
 <%= link_to 'Edit', edit_actividad_path(@actividad) %> |

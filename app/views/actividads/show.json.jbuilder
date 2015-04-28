@@ -1,1 +1,1 @@
-json.extract! @actividad, :id, :codac, :nombre, :descripcion, :ponderacion, :codpr, :created_at, :updated_at
+json.extract! @actividad, :id, :nombre, :descripcion, :ponderacion, :id_parcial, :calificacion, :created_at, :updated_at

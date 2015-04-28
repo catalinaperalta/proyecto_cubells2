@@ -69,6 +69,6 @@ class ParcialsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def parcial_params
-      params.require(:parcial).permit(:codpr, :numero, :calificacion, :matricula, :codma)
+      params.require(:parcial).permit(:numero, :calificacion, :id_materia_alumno)
     end
 end

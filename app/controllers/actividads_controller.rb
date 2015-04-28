@@ -69,6 +69,6 @@ class ActividadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def actividad_params
-      params.require(:actividad).permit(:codac, :nombre, :descripcion, :ponderacion, :codpr)
+      params.require(:actividad).permit(:nombre, :descripcion, :ponderacion, :id_parcial, :calificacion)
     end
 end
