@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150427183348) do
+ActiveRecord::Schema.define(version: 20150428020626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,9 +49,9 @@ ActiveRecord::Schema.define(version: 20150427183348) do
   end
 
   create_table "directors", force: :cascade do |t|
-    t.string "coddr",    limit: 4,                    null: false
     t.string "nombre",   limit: 25
     t.string "password", limit: 15, default: "12345", null: false
+    t.string "nomina"
   end
 
   create_table "materia_alumnos", force: :cascade do |t|
