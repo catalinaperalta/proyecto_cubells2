@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'sessions/new'
+
   root 'alumnos#homepage'
   get 'materiasAlumno' => 'alumnos#materiasAlumno'
+
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   resources :cursos
 
