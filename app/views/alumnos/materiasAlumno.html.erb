@@ -83,9 +83,9 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Materias <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="demo" class="collapse">
                             <% @materias.each do |materia| %>
-                            <% @clase = materia.nombre %>
+                            
                             <li>
-                                <a href="#"><%= materia.nombre %></a>
+                                <% link_to materia.nombre, materia_alumno(@ma) %>
                             </li>
                             <%end%>
                         </ul>

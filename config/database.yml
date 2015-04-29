@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
   username: postgres
-  password: jigary
+  password: 0145080
   host: localhost
   socket: /var/pgsql_socket/.s.PGSQL.5432
 

@@ -10,6 +10,9 @@ class MateriaAlumnosController < ApplicationController
   # GET /materia_alumnos/1
   # GET /materia_alumnos/1.json
   def show
+    @materia = Curso.select("cursos.*").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id ").where("materia_alumnos.id = ?", params[:id]);
+    @alumno = Alumno.select("alumnos.*").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id ").where("materia_alumnos.id = ?", params[:id]);
+    @materia_alumno = MateriaAlumno.find(params[:id]);
   end
 
   # GET /materia_alumnos/new

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
+  post 'materia' => 'alumnos#create'
+
   resources :cursos
 
   resources :materia_profesors

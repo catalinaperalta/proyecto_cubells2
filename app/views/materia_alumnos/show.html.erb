@@ -2,12 +2,16 @@
 
 <p>
   <strong>Materia:</strong>
-  <%= @materia_alumno.materia %>
+  <% @materia.each do |materia| %>
+  <%= materia.nombre %>
+  <% end %>
 </p>
 
 <p>
   <strong>Alumno:</strong>
-  <%= @materia_alumno.alumno %>
+  <% @alumno.each do |alumno| %>
+  <%= alumno.nombre %>
+  <% end %>
 </p>
 
 <p>
@@ -15,5 +19,3 @@
   <%= @materia_alumno.fecha %>
 </p>
 
-<%= link_to 'Edit', edit_materia_alumno_path(@materia_alumno) %> |
-<%= link_to 'Back', materia_alumnos_path %>
