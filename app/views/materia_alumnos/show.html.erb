@@ -19,3 +19,11 @@
   <%= @materia_alumno.fecha %>
 </p>
 
+<p>
+  <strong>Parciales:</strong>
+  <% @parcial.each do |pa| %>
+  <li>
+    Parcial <%= pa.numero %>: <%= pa.calificacion %>
+  </li>
+  <% end %>
+</p>
