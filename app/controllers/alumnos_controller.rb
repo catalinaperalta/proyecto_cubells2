@@ -24,10 +24,12 @@ class AlumnosController < ApplicationController
 
   def materiasAlumno
   #  @user = Alumno.find_by(matricula: params[:matricula])
-  #  @materias = Curso.select("cursos.nombre, alumnos.matricula, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
+  @materias = Curso.select("cursos.*, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
   #  @s = Curso.select("cursos.nombre as curso, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
-   @alumnos = Alumno.all
+   #@alumnos = Alumno.all
    # @s = Curso.select("cursos.nombre as curso, alumnos.nombre as alumno").joins("materia_alumnos on cursos.id = materia_alumnos.materia_id join alumnos on alumnos.id = materia_alumnos.alumno_id join materia_profesors on materia_profesors.materia_id = cursos.id join profesors on profesors.id = materia_profesors.profesor_id");
+    @materias = Curso.select("cursos.*, profesors.nombre as profesor").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
+    @alumno = Alumno.find(params[:id])
   end
   
   # GET /alumnos/new

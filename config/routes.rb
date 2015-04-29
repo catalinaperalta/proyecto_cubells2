@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   root 'sessions#new'
-  get 'materiasAlumno' => 'alumnos#materiasAlumno'
+
+  get 'materiasAlumno' => 'alumnos#show'
+  # get 'show' => 'alumnos#show'
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
