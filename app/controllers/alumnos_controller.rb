@@ -5,13 +5,13 @@ class AlumnosController < ApplicationController
   # GET /alumnos.json
   def index
     @alumnos = Alumno.all
-    @materias = Curso.select("cursos.nombre, alumnos.matricula").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
+    @materias = Curso.select("cursos.nombre, alumnos.matricula").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors.id = cursos.profesor");
   end
 
   # GET /alumnos/1
   # GET /alumnos/1.json
   def show
-        @materias = Curso.select("cursos.*, profesors.nombre as profesor, materia_alumnos.id as ma").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
+        @materias = Curso.select("cursos.*, profesors.nombre as profesor, materia_alumnos.id as ma").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors ON profesors.id = cursos.profesor").where("alumnos.id = ?", params[:id]);
         @alumno = Alumno.find(params[:id]);
         @clase = Curso.select("cursos.*, materia_alumnos.id").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id").where("alumno.id = ?", params[:id]);
         @ma = Curso.select("materia_alumnos.id").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id").where("alumno.id = ?, ", params[:id]);
@@ -34,11 +34,11 @@ class AlumnosController < ApplicationController
 
   def materiasAlumno
   #  @user = Alumno.find_by(matricula: params[:matricula])
-   @materias = Curso.select("cursos.*, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
+   @materias = Curso.select("cursos.*, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors ON profesors.id = cursos.profesor").where("alumnos.id = ?", params[:id]);
   #  @s = Curso.select("cursos.nombre as curso, profesors.nombre").joins("JOIN materia_alumnos ON materia_alumnos.materia_id  = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id");
    #@alumnos = Alumno.all
    # @s = Curso.select("cursos.nombre as curso, alumnos.nombre as alumno").joins("materia_alumnos on cursos.id = materia_alumnos.materia_id join alumnos on alumnos.id = materia_alumnos.alumno_id join materia_profesors on materia_profesors.materia_id = cursos.id join profesors on profesors.id = materia_profesors.profesor_id");
-    @materias = Curso.select("cursos.*, profesors.nombre as profesor").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN materia_profesors ON materia_profesors.materia_id = cursos.id JOIN profesors ON profesors.id = materia_profesors.profesor_id").where("alumnos.id = ?", params[:id]);
+    @materias = Curso.select("cursos.*, profesors.nombre as profesor").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors ON profesors.id = cursos.profesor").where("alumnos.id = ?", params[:id]);
     @alumno = Alumno.find(params[:id])
   end
   

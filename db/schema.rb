@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428020626) do
+ActiveRecord::Schema.define(version: 20150430171342) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20150428020626) do
     t.string  "nombre",          limit: 50, null: false
     t.integer "horas_semanales"
     t.string  "requerimiento",   limit: 4
+    t.integer "profesor"
   end
 
   create_table "directors", force: :cascade do |t|
@@ -76,16 +77,6 @@ ActiveRecord::Schema.define(version: 20150428020626) do
   add_index "materia_carreras", ["carrera_id"], name: "index_materia_carreras_on_carrera_id", using: :btree
   add_index "materia_carreras", ["materia_id"], name: "index_materia_carreras_on_materia_id", using: :btree
 
-  create_table "materia_profesors", force: :cascade do |t|
-    t.integer  "materia_id"
-    t.integer  "profesor_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "materia_profesors", ["materia_id"], name: "index_materia_profesors_on_materia_id", using: :btree
-  add_index "materia_profesors", ["profesor_id"], name: "index_materia_profesors_on_profesor_id", using: :btree
-
   create_table "parcials", force: :cascade do |t|
     t.integer "numero",            null: false
     t.integer "calificacion"
@@ -99,14 +90,31 @@ ActiveRecord::Schema.define(version: 20150428020626) do
     t.string "password", limit: 15, default: "12345", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
   add_foreign_key "actividads", "parcials", column: "id_parcial"
   add_foreign_key "alumnos", "carreras", column: "id_carrera"
   add_foreign_key "carreras", "directors", column: "id_director"
+  add_foreign_key "cursos", "profesors", column: "profesor"
   add_foreign_key "materia_alumnos", "alumnos"
   add_foreign_key "materia_alumnos", "cursos", column: "materia_id"
   add_foreign_key "materia_carreras", "carreras"
   add_foreign_key "materia_carreras", "cursos", column: "materia_id"
-  add_foreign_key "materia_profesors", "cursos", column: "materia_id"
-  add_foreign_key "materia_profesors", "profesors"
   add_foreign_key "parcials", "materia_alumnos", column: "id_materia_alumno"
 end

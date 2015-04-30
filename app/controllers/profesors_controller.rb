@@ -11,7 +11,7 @@ class ProfesorsController < ApplicationController
   # GET /profesors/1.json
   def show
     @profesor = Profesor.find(params[:id])
-    @materias = Curso.select("cursos.*, materia_profesors.id as mp").joins("JOIN materia_profesors ON materia_profesors.materia_id = cursos.id").where("materia_profesors.profesor_id = ?", params[:id])
+    @materias = Curso.select("cursos.*").where("cursos.profesor = ?", params[:id])
   end
 
   # GET /profesors/new
