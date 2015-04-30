@@ -1,24 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Codma:</strong>
-  <%= @curso.codma %>
-</p>
-
-<p>
-  <strong>Nombre:</strong>
+  <strong>Curso:</strong>
   <%= @curso.nombre %>
 </p>
 
 <p>
-  <strong>Horas semanales:</strong>
-  <%= @curso.horas_semanales %>
+	<strong>Alumnos</strong>
+	<% @alumnos.each do |a| %>
+	<li><%= a.matricula %>  <%= a.nombre %></li>
+	<%end%>
 </p>
 
-<p>
   <strong>Requerimiento:</strong>
   <%= @curso.requerimiento %>
 </p>
-
-<%= link_to 'Edit', edit_curso_path(@curso) %> |
-<%= link_to 'Back', cursos_path %>

@@ -1,7 +1,3 @@
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,14 +124,16 @@
                                                 <th>Profesor</th>
                                                 <th>Nombre</th>
                                                 <th>ID Materia</th>
+                                                <th>Borrar alumno</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <% @materias.each do |materia| %>
                                                 <tr>
                                                 <td> <%= materia.prof_name %></td>
-                                                <td> <%= materia.nombre %></td>
+                                                <td> <%= link_to materia.nombre, curso_path(materia.id) %></td>
                                                 <td> <%= materia.codma %></td>
+                                                <td><center><%= link_to 'Borrar', materia,:class => "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
                                                 </tr>
                                                 <% end %>
                                           </tbody>
