@@ -1,0 +1,11 @@
+<p>
+<strong> Lista de Materias de <%= @carrera.nombre %> </strong>
+</p>
+
+<p>
+<% @materias.each do |m| %>
+<li> <%= m.codma %> <%= m.nombre %> </li>
+<% end %>
+</p>
+
+<%= link_to "Agregar", new_curso_path(@director.id) %>

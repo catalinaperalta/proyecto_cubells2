@@ -24,6 +24,13 @@
   <% @parcial.each do |pa| %>
   <li>
     Parcial <%= pa.numero %>: <%= pa.calificacion %>
+      <% @actividad.each do |act| %>
+      
+        <% if act.id_parcial == pa.id %>
+        <li><%= act.nombre %> <%= act.calificacion %></li>
+        <% end %>
+      
+      <% end %>
   </li>
   <% end %>
 </p>

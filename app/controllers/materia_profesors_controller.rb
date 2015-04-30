@@ -10,6 +10,9 @@ class MateriaProfesorsController < ApplicationController
   # GET /materia_profesors/1
   # GET /materia_profesors/1.json
   def show
+    @mp = MateriaProfesor.find(params[:id])
+    @materia = Curso.select("cursos.*").joins("JOIN materia_profesors ON materia_profesors.materia_id = cursos.id").where("materia_profesors.id = ?", params[:id])
+    @profesor = Profesor.select("profesors.*").joins("JOIN materia_profesors ON materia_profesors.profesor_id = profesors.id").where("materia_profesors.id = ?", params[:id])
   end
 
   # GET /materia_profesors/new
@@ -19,6 +22,11 @@ class MateriaProfesorsController < ApplicationController
 
   # GET /materia_profesors/1/edit
   def edit
+  end
+
+  def listaap
+    @mp = MateriaProfesor.find(params[:id])
+    
   end
 
   # POST /materia_profesors

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   end
 
   def create
-  	user = Director.find_by(nomina: params[:session][:usuario].downcase)
+  	user = Director.find_by(nomina: params[:session][:usuario])
   	if user
   		if user.password == params[:session][:password]
   			log_in user
@@ -21,7 +21,7 @@ class SessionsController < ApplicationController
   				flash[:danger] = 'Invalid password'
   			end
   		else
-  			user = Profesor.find_by(nomina: params[:session][:usuario].downcase)
+  			user = Profesor.find_by(nomina: params[:session][:usuario])
   			if user
   				if user.password == params[:session][:password]
   					log_in user

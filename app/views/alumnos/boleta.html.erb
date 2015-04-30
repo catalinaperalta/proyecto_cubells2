@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <% @semestre.each do |s| %>
+      <li><strong> Semestre <%= s.numero %>: </strong></li>
+          <% @materia.each do |m| %>
+            <% if m.numero == s.numero %>
+              <li><%= m.materia %>
+              <% @parcial.each do |p| %>
+                <% if p.materia == m.ma_id %>
+                <li>Parcial <%= p.numero %> Calificacion: <%= p.calificacion %> </li>
+                <%end%> 
+              <% end %>
+            </li>
+            <% end %>
+          <% end %>
+  <% end %>
+</p>

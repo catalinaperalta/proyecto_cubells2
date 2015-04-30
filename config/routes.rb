@@ -13,6 +13,13 @@ Rails.application.routes.draw do
 
   post 'materia' => 'alumnos#create'
 
+  get 'alumnos/boleta/:id' => 'alumnos#boleta', :as => :alumnos_boleta
+
+  get 'directors/listaa/:id' => 'directors#listaa', :as => :directors_listaa
+  get 'directors/listam/:id' => 'directors#listam', :as => :directors_listam
+
+  get 'materia_profesors/listaap/:id' => 'materia_profesors#listaap', :as => :materia_profesors_listaap
+
   resources :cursos
 
   resources :materia_profesors

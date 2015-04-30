@@ -10,6 +10,21 @@ class DirectorsController < ApplicationController
   # GET /directors/1
   # GET /directors/1.json
   def show
+    @director = Director.find(params[:id])
+    @numero_alumnos = Alumno.count(:conditions => ["carrera.id_director = ?", params[:id]], :joins => "JOIN carreras ON carreras.id = alumnos.id_carrera")
+    @numero_materias = MateriaCarrera.count(:conditions => ["carreras.id_director = ?", params[:id]], :joins => "JOIN carreras ON carreras.id = materia_carreras.carrera_id")
+  end
+
+  def listaa
+    @director = Director.find(params[:id])
+    @carrera = Carrera.find_by id_director: params[:id]
+    @alumnos = Alumno.select("alumnos.*").joins("JOIN carreras ON carreras.id = alumnos.id_carrera JOIN directors ON carreras.id_director = directors.id").where("directors.id = ?", params[:id])
+  end
+
+  def listam
+    @director = Director.find(params[:id])
+    @carrera = Carrera.find_by id_director: params[:id]
+    @materias = Curso.select("cursos.*").joins("JOIN materia_carreras ON materia_carreras.materia_id = cursos.id JOIN carreras ON materia_carreras.carrera_id = carreras.id JOIN directors ON directors.id = carreras.id_director").where("directors.id = ?", params[:id])
   end
 
   # GET /directors/new

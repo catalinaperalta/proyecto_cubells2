@@ -13,8 +13,8 @@ class MateriaAlumnosController < ApplicationController
     @materia = Curso.select("cursos.*").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id ").where("materia_alumnos.id = ?", params[:id]);
     @alumno = Alumno.select("alumnos.*").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id ").where("materia_alumnos.id = ?", params[:id]);
     @materia_alumno = MateriaAlumno.find(params[:id]);
-    #@parcial = Parcial.find_by id_materia_alumno: params[:id];
     @parcial = Parcial.select("parcials.*").where("id_materia_alumno = ?", params[:id]);
+    @actividad = Actividad.select("actividads.*").joins("JOIN parcials ON parcials.id = actividads.id_parcial JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno").where("materia_alumnos.id = ?", params[:id]);
   end
 
   # GET /materia_alumnos/new

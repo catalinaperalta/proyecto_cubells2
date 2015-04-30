@@ -2,13 +2,11 @@
 
 <p>
   <strong>Materia:</strong>
-  <%= @materia_profesor.materia %>
+  <% @materia.each do |m| %>
+  	<li>
+  		<%= link_to m.nombre, materia_profesors_listaap_path(@mp.id) %>
+
+  	</li>
+  <% end %>
 </p>
 
-<p>
-  <strong>Profesor:</strong>
-  <%= @materia_profesor.profesor %>
-</p>
-
-<%= link_to 'Edit', edit_materia_profesor_path(@materia_profesor) %> |
-<%= link_to 'Back', materia_profesors_path %>

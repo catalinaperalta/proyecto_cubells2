@@ -1,0 +1,9 @@
+<p>
+<strong> Lista de Alumnos de <%= @carrera.nombre %> </strong>
+</p>
+
+<p>
+<% @alumnos.each do |a| %>
+<li> <%= a.matricula %> <%= a.nombre %> <%= a.apellido_p %> <%= a.apellido_m %></li>
+<% end %>
+</p>
