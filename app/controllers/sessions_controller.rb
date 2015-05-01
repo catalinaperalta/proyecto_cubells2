@@ -9,6 +9,10 @@ class SessionsController < ApplicationController
   			log_in user
         session
   			redirect_to user and return
+      else
+          flash[:danger] = 'Invalid password'
+          render 'new'
+      
   		end
   	else
   		user = Alumno.find_by(matricula: params[:session][:usuario])
