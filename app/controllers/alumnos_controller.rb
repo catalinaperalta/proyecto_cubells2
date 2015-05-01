@@ -11,7 +11,7 @@ class AlumnosController < ApplicationController
   # GET /alumnos/1
   # GET /alumnos/1.json
   def show
-        @materias = Curso.select("cursos.*, profesors.nombre as profesor, materia_alumnos.id as ma").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors ON profesors.id = cursos.profesor").where("alumnos.id = ?", params[:id]);
+        @materias = Curso.select("cursos.*, profesors.nombre as profe, materia_alumnos.id as ma").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id JOIN profesors ON profesors.id = cursos.profesor").where("alumnos.id = ?", params[:id]);
         @alumno = Alumno.find(params[:id]);
         @clase = Curso.select("cursos.*, materia_alumnos.id").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id").where("alumno.id = ?", params[:id]);
         @ma = Curso.select("materia_alumnos.id").joins("JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id").where("alumno.id = ?, ", params[:id]);
