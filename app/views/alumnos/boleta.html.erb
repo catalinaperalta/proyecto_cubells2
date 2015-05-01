@@ -147,7 +147,6 @@
                                                   <%end%>
                                                 <% end %>
                                           </tbody>
-                                          <%= link_to "Generar PDF", alumnos_boleta_path(@alumno, :format => 'pdf') %> 
                                     </table>
 
 
@@ -164,6 +163,7 @@
 
                         </div>
                          <% end %>
+                         <p align="right"><%= link_to "Generar PDF", alumnos_boleta_path(@alumno, :format => 'pdf') %> </p>
                     </div>
                     </div>
  <!--
