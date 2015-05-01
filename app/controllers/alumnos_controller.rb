@@ -24,6 +24,7 @@ class AlumnosController < ApplicationController
     @semestre = MateriaCarrera.select("materia_carreras.semestre as numero, materia_carreras.materia_id").joins("JOIN alumnos ON alumnos.id_carrera = materia_carreras.carrera_id").where("alumnos.id = ?", params[:id]).uniq;
     # @semestre = MateriaCarrera.select("materia_carreras.semestre as numero").joins("JOIN cursos ON materia_carreras.materia_id = cursos.id JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN alumnos ON materia_carreras.carrera_id = alumnos.id_carrera").where("alumnos.id = ?", params[:id]);
     @materia = MateriaAlumno.select("materia_alumnos.id as ma_id, cursos.nombre as materia, materia_carreras.semestre as numero").joins("JOIN materia_carreras ON materia_carreras.materia_id = materia_alumnos.materia_id JOIN cursos ON cursos.id = materia_carreras.materia_id JOIN carreras ON carreras.id = materia_carreras.carrera_id JOIN alumnos ON alumnos.id = materia_alumnos.alumno_id").where("alumnos.id_carrera = carreras.id AND alumnos.id = ?", params[:id]);
+    @avg = Parcial.joins("JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno").where("materia_alumnos.alumno_id = ?", params[:id]).group(:id_materia_alumno).average(:calificacion);
   end
 
   def homepage
