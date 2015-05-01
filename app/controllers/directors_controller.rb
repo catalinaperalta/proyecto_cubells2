@@ -87,7 +87,7 @@ class DirectorsController < ApplicationController
   end
 
   def correct_director
-    @user = Director.find(params[:id])
+    @user = Director.find_by(id: params[:id])
     redirect_to(root_url) unless @user == current_director
   end
 

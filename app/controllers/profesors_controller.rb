@@ -73,7 +73,7 @@ class ProfesorsController < ApplicationController
   end
 
   def correct_profesor
-    @user = Profesor.find(params[:id])
+    @user = Profesor.find_by(id: params[:id])
     redirect_to(root_url) unless @user == current_profesor
   end
 

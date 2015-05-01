@@ -102,7 +102,7 @@ class AlumnosController < ApplicationController
   end
 
   def correct_alumno
-    @user = Alumno.find(params[:id])
+    @user = Alumno.find_by(id: params[:id])
     redirect_to current_alumno unless @user == current_alumno
   end
 
