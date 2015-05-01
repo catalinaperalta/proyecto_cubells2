@@ -1,5 +1,6 @@
 class DirectorsController < ApplicationController
-  before_action :set_director, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_director, only: [:set_director, :show, :edit, :update, :destroy]
+  before_action :correct_director, only: [:show, :edit, :update, :destroy]
 
   # GET /directors
   # GET /directors.json
@@ -77,6 +78,19 @@ class DirectorsController < ApplicationController
   end
 
   private
+
+
+  def logged_in_director
+    unless director_logged_in?
+      redirect_to root_url
+    end
+  end
+
+  def correct_director
+    @user = Director.find(params[:id])
+    redirect_to(root_url) unless @user == current_director
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_director
       @director = Director.find(params[:id])

@@ -1,5 +1,6 @@
 class ProfesorsController < ApplicationController
-  before_action :set_profesor, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_profesor, only: [:set_profesor, :show, :edit, :update, :destroy]
+  before_action :correct_profesor, only: [:show, :edit, :update, :destroy]
 
   # GET /profesors
   # GET /profesors.json
@@ -64,6 +65,18 @@ class ProfesorsController < ApplicationController
   end
 
   private
+
+  def logged_in_profesor
+    unless profesor_logged_in?
+      redirect_to root_url
+    end
+  end
+
+  def correct_profesor
+    @user = Profesor.find(params[:id])
+    redirect_to(root_url) unless @user == current_profesor
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_profesor
       @profesor = Profesor.find(params[:id])

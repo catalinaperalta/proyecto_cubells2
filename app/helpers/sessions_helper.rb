@@ -1,22 +1,33 @@
 module SessionsHelper
-	def log_in(user)
+	def log_in(user, type)
 		session[:user_id] = user.id
+		session[:tipo] = type
 	end
 
-	def log_out
-		session.delete(:user_id)
-	end
+	
 
 	def current_profesor
-		@current_profesor ||= Profesor.find_by(id: session[user_id])
+		if (session[:tipo] == 1)
+			@current_profesor ||= Profesor.find_by(id: session[:user_id])
+		else
+			@current_profesor = nil
+		end
 	end
 
 	def current_director
-		@current_director ||= Direcor.find_by(id: session[user_id])
+		if (session[:tipo] == 0)
+			@current_director ||= Director.find_by(id: session[:user_id])
+		else
+			@current_director = nil
+		end
 	end
 
 	def current_alumno
-		@current_alumno ||= Alumnos.find_by(id: session[user_id])
+		if (session[:tipo] == 2)
+			@current_alumno ||= Alumno.find_by(id: session[:user_id])
+		else
+			current_alumno = nil
+		end
 	end
 
 	def alumno_logged_in?
@@ -31,4 +42,10 @@ module SessionsHelper
 		!current_director.nil?
 	end
 
+	def log_out
+		session.delete(:user_id)
+		@current_director = nil
+		@current_alumno = nil
+		@current_profesor = nil
+	end
 end
