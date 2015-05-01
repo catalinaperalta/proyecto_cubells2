@@ -1,5 +1,6 @@
 class AlumnosController < ApplicationController
-  before_action :set_alumno, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_alumno, only: [:set_alumno, :show, :edit, :update, :destroy]
+  before_action :correct_alumno, only: [:show, :edit, :update, :destroy]
 
   # GET /alumnos
   # GET /alumnos.json
@@ -92,6 +93,19 @@ class AlumnosController < ApplicationController
   end
 
   private
+
+
+  def logged_in_alumno
+    unless alumno_logged_in?
+      redirect_to '/'
+    end
+  end
+
+  def correct_alumno
+    @user = Alumno.find(params[:id])
+    redirect_to current_alumno unless @user == current_alumno
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_alumno
       @alumno = Alumno.find(params[:id])

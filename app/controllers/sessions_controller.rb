@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   	user = Director.find_by(nomina: params[:session][:usuario])
   	if user
   		if user.password == params[:session][:password]
-  			log_in user
+  			log_in user, 0
         session
   			redirect_to user and return
       else
@@ -19,7 +19,8 @@ class SessionsController < ApplicationController
   		if user
   			flash[:success] = 'Valid alumno'
   			if user.password == params[:session][:password]
-  				log_in user
+  				log_in user, 2
+
   				redirect_to user and return
   			else
   				flash[:danger] = 'Invalid password'
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
   			user = Profesor.find_by(nomina: params[:session][:usuario])
   			if user
   				if user.password == params[:session][:password]
-  					log_in user
+  					log_in user, 1
   					redirect_to user and return
   				end
   			end
@@ -39,7 +40,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
+    log_out if (profesor_logged_in? || alumno_logged_in? || director_logged_in?)
     redirect_to root_url
   end
 end
