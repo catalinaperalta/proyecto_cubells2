@@ -1,6 +1,6 @@
 class DirectorsController < ApplicationController
-  before_action :logged_in_director, only: [:set_director, :show, :edit, :update, :destroy]
-  before_action :correct_director, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_director, only: [:set_director, :show, :edit, :update, :destroy, :listaa, :listam]
+  before_action :correct_director, only: [:show, :edit, :update, :destroy, :listaa, :listam]
 
   # GET /directors
   # GET /directors.json

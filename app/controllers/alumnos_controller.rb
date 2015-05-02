@@ -1,6 +1,6 @@
 class AlumnosController < ApplicationController
-  before_action :logged_in_alumno, only: [:set_alumno, :show, :edit, :update, :destroy]
-  before_action :correct_alumno, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in_alumno, only: [:set_alumno, :show, :edit, :update, :destroy, :boleta]
+  before_action :correct_alumno, only: [:show, :edit, :update, :destroy, :boleta]
 
   # GET /alumnos
   # GET /alumnos.json

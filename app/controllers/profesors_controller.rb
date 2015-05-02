@@ -1,6 +1,6 @@
 class ProfesorsController < ApplicationController
-  before_action :logged_in_profesor, only: [:set_profesor, :show, :edit, :update, :destroy, :listaact]
-  before_action :correct_profesor, only: [:show, :edit, :update, :destroy, :listaact]
+  before_action :logged_in_profesor, only: [:set_profesor, :show, :edit, :update, :destroy, :listaact, :listaal]
+  before_action :correct_profesor, only: [:show, :edit, :update, :destroy, :listaact, :listaal]
 
   # GET /profesors
   # GET /profesors.json

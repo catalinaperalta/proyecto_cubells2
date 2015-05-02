@@ -1,5 +1,6 @@
 class ActividadsController < ApplicationController
   before_action :set_actividad, only: [:show, :edit, :update, :destroy]
+  before_action :profesor_activo, only: [:edit, :update, :destroy]
 
   # GET /actividads
   # GET /actividads.json
@@ -63,6 +64,12 @@ class ActividadsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def profesor_activo
+      unless profesor_logged_in?
+        redirect_to root_url
+      end
+    end
+
     def set_actividad
       @actividad = Actividad.find(params[:id])
     end
