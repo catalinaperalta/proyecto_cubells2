@@ -20,6 +20,7 @@ class ActividadsController < ApplicationController
 
   # GET /actividads/1/edit
   def edit
+    @profesor = Profesor.select("profesors.*").joins("JOIN cursos ON profesors.id = cursos.profesor JOIN materia_alumnos ON materia_alumnos.materia_id = cursos.id JOIN parcials ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id]).first
   end
 
   # POST /actividads

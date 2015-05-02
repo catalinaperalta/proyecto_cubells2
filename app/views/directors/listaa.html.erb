@@ -77,7 +77,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                         <%= link_to "Dashboard", director_path(@director.id)%>
                     </li>
                     <li class = "active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Alumnos <i class="fa fa-fw fa-caret-down"></i></a>
@@ -123,7 +123,6 @@
                                             <tr>
                                                 <th>Matrícula</th>
                                                 <th>Nombre</th>
-                                                <th>Borrar alumno</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -131,12 +130,11 @@
                                                 <tr>
                                                 <td> <%= a.matricula %> </td>
                                                 <td> <%= a.nombre %> <%= a.apellido_p %> <%= a.apellido_m %></td>
-                                                <td><center><%= link_to 'Borrar', a,:class => "btn btn-default", method: :delete, data: { confirm: 'Are you sure?' } %></center></td>
                                                 <% end %>
                                           </tbody>
 
                                     </table>
-                                    <%= link_to "Agregar", new_alumno_path(@director.id) %>
+                                    
                                 </div>
  <!--
                                 <div class="text-right">
