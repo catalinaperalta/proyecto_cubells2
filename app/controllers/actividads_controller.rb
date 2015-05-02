@@ -29,7 +29,7 @@ class ActividadsController < ApplicationController
 
     respond_to do |format|
       if @actividad.save
-        format.html { redirect_to @actividad, notice: 'Actividad was successfully created.' }
+        format.html { redirect_to @actividad, notice: 'Se genero la actividad.' }
         format.json { render :show, status: :created, location: @actividad }
       else
         format.html { render :new }
@@ -41,10 +41,13 @@ class ActividadsController < ApplicationController
   # PATCH/PUT /actividads/1
   # PATCH/PUT /actividads/1.json
   def update
+    # @ma = MateriaAlumno.select("materia_alumnos.*").joins("JOIN parcial ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id])
+    @mat_al = MateriaAlumno.select("materia_alumnos.id").joins("JOIN parcials ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id])
+    @id = @mat_al.id
     respond_to do |format|
       if @actividad.update(actividad_params)
-        format.html { redirect_to @actividad, notice: 'Actividad was successfully updated.' }
-        format.json { render :show, status: :ok, location: @actividad }
+        format.html { redirect_to :controller => 'profesors', :action => 'listaact', :id => @id, notice: 'Se agrego la calificación.' }
+        #format.json { render :show, status: :ok, location: @actividad }
       else
         format.html { render :edit }
         format.json { render json: @actividad.errors, status: :unprocessable_entity }
@@ -57,7 +60,7 @@ class ActividadsController < ApplicationController
   def destroy
     @actividad.destroy
     respond_to do |format|
-      format.html { redirect_to actividads_url, notice: 'Actividad was successfully destroyed.' }
+      format.html { redirect_to actividads_url, notice: 'Se borró exitosamente la actividad.' }
       format.json { head :no_content }
     end
   end

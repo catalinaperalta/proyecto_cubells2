@@ -1,4 +1,5 @@
-<%= form_for(@actividad) do |f| %>
+
+  <%= form_for(@actividad) do |f| %>
   <% if @actividad.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
@@ -12,20 +13,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :nombre %><br>
-    <%= f.text_field :nombre %>
-  </div>
-  <div class="field">
-    <%= f.label :descripcion %><br>
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
     <%= f.label :ponderacion %><br>
-    <%= f.number_field :ponderacion %>
-  </div>
-  <div class="field">
-    <%= f.label :id_parcial %><br>
-    <%= f.number_field :id_parcial %>
+    <%= f.text_field :ponderacion %>
   </div>
   <div class="field">
     <%= f.label :calificacion %><br>

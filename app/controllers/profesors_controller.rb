@@ -16,18 +16,19 @@ class ProfesorsController < ApplicationController
   end
 
   def listaact
+    @materia = Curso.select("cursos.nombre as nombre").joins("JOIN materia_alumnos.materia_id = cursos.id").where("materia_alumnos.id = ?", params[:id])
     @profesor = Profesor.find(current_profesor.id)
     @ma = MateriaAlumno.find(params[:id])
     @parcials = Parcial.select("parcials.numero").joins("JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno").where("materia_alumnos.id = ?", params[:id]).order(:numero).uniq
-    @alumno = Alumno.select("alumnos.nombre, alumnos.matricula as matricula").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id").where("materia_alumnos.id = ?", params[:id])
+    @alumno = Alumno.select("alumnos.nombre, alumnos.apellido_p, alumnos.matricula as matricula").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id").where("materia_alumnos.id = ?", params[:id])
     @actividades = Actividad.select("actividads.*, parcials.numero").joins("JOIN parcials ON parcials.id = actividads.id_parcial JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno").where("materia_alumnos.id = ?", params[:id])
-
   end
 
   def listaal
     definir_materia (params[:id])
     @profesor = Profesor.find(current_profesor.id)
     @alumnos = Alumno.select("alumnos.*, materia_alumnos.id as ma_id").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id").where("materia_alumnos.materia_id = ?", params[:id]);
+    @materia = Curso.find(params[:id]);
   end
 
   # GET /profesors/new
