@@ -42,11 +42,10 @@ class ActividadsController < ApplicationController
   # PATCH/PUT /actividads/1.json
   def update
     # @ma = MateriaAlumno.select("materia_alumnos.*").joins("JOIN parcial ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id])
-    @mat_al = MateriaAlumno.select("materia_alumnos.id").joins("JOIN parcials ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id])
-    @id = @mat_al.id
+    @mat_al = MateriaAlumno.select("materia_alumnos.id").joins("JOIN parcials ON parcials.id_materia_alumno = materia_alumnos.id JOIN actividads ON actividads.id_parcial = parcials.id").where("actividads.id = ?", params[:id]).first
     respond_to do |format|
       if @actividad.update(actividad_params)
-        format.html { redirect_to :controller => 'profesors', :action => 'listaact', :id => @id, notice: 'Se agrego la calificación.' }
+        format.html { redirect_to :controller => 'profesors', :action => 'listaact', :id => @mat_al.id, notice: 'Se agrego la calificación.' }
         #format.json { render :show, status: :ok, location: @actividad }
       else
         format.html { render :edit }
