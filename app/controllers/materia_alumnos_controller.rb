@@ -19,6 +19,7 @@ class MateriaAlumnosController < ApplicationController
 
   # GET /materia_alumnos/new
   def new
+    @materia = Curso.find(params[:format])
     @materia_alumno = MateriaAlumno.new
   end
 

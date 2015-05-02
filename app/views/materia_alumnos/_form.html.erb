@@ -11,18 +11,18 @@
     </div>
   <% end %>
 
-  <% @materia_alumno.materia_id = params[:id] %>
+  <% @materia_alumno.materia_id = @materia.id %>
 
   <div class="field">
-    <%= f.label :alumno_id %><br>
+    <%= f.label :alumno_id, "Matricula del alumno" %><br>
     <%= f.text_field :alumno_id %>
-    <% @materia_alumno.alumno_id = Alumno.select("alumnos.id").where("alumnos.matricula = ?", @materia_alumno.materia_id).take %>
+    <% @materia_alumno.alumno_id = Alumno.select("alumnos.id").where("alumnos.matricula = ?", @materia_alumno.alumno_id).take %>
   </div>
   <div class="field">
     <%= f.label :fecha %><br>
     <%= f.date_select :fecha %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Asignar" %>
   </div>
 <% end %>
