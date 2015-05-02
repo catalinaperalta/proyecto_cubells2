@@ -18,7 +18,8 @@ Rails.application.routes.draw do
   get 'directors/listaa/:id' => 'directors#listaa', :as => :directors_listaa
   get 'directors/listam/:id' => 'directors#listam', :as => :directors_listam
 
-  get 'materia_profesors/listaap/:id' => 'materia_profesors#listaap', :as => :materia_profesors_listaap
+  get 'profesors/listaact/:id' => 'profesors#listaact', :as => :profesors_listaact
+  get 'profesors/listaal/:id' => 'profesors#listaal', :as => :profesors_listaal
 
   resources :cursos
 

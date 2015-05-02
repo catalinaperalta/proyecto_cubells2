@@ -85,7 +85,7 @@
                             <% @materias.each do |materia| %>
                             
                             <li>
-                                 <%= link_to materia.nombre, materia_profesor_path(materia.profesor) %>
+                                 <%= link_to materia.nombre, profesors_listaal_path(materia.id) %>
                             </li>
                             <%end%>
                         </ul>

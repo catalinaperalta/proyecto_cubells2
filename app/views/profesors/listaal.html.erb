@@ -1,0 +1,5 @@
+<p> HOLA </p>
+
+<% @alumnos.each do |alumno| %>
+	<li><%= link_to alumno.matricula, profesors_listaact_path(alumno.ma_id)%> <%= alumno.nombre %></li>
+<%end%>

@@ -1,0 +1,13 @@
+<p>
+	<% @alumno.each do |alu| %>
+		<b><%= alu.matricula%> <%= alu.nombre %></b>
+	<%end%>
+	<% @parcials.each do |p| %>
+		Parcial <strong><%= p.numero %></strong>
+		<% @actividades.each do |act|%>
+			<% if act.numero == p.numero %>
+				<li><%= link_to act.nombre, edit_actividad_path(act.id) %> <%= act.calificacion %></li>
+			<%end%>
+		<%end%>
+	<%end%>
+</p>
