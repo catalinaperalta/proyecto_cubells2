@@ -76,4 +76,8 @@ class MateriaAlumnosController < ApplicationController
     def materia_alumno_params
       params.require(:materia_alumno).permit(:materia_id, :alumno_id, :fecha)
     end
+
+    def materia_alumno_nuevo_params
+      params.require(:materia_alumno).permit(:materia_codma, :alumno_matricula, :fecha)
+    end
 end

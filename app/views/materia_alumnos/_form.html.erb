@@ -11,14 +11,12 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :materia_id %><br>
-    <% codma = "" %>
-    <%= f.text_field :materia_id %>
-  </div>
+  <% @materia_alumno.materia_id = params[:id] %>
+
   <div class="field">
     <%= f.label :alumno_id %><br>
     <%= f.text_field :alumno_id %>
+    <% @materia_alumno.alumno_id = Alumno.select("alumnos.id").where("alumnos.matricula = ?", @materia_alumno.materia_id).take %>
   </div>
   <div class="field">
     <%= f.label :fecha %><br>
