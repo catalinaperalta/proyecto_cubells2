@@ -1,5 +1,6 @@
 class CursosController < ApplicationController
   before_action :set_curso, only: [:show, :edit, :update, :destroy]
+  before_action :director_activo, only:[:show, :edit, :update, :destroy]
 
   # GET /cursos
   # GET /cursos.json
@@ -65,6 +66,13 @@ class CursosController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+
+    def director_activo
+      unless director_logged_in?
+        redirect_to root_url
+      end
+    end
+
     def set_curso
       @curso = Curso.find(params[:id])
     end

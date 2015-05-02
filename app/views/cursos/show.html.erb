@@ -2,7 +2,8 @@
 
 <p>
   <strong>Curso:</strong>
-  <%= @curso.nombre %>
+  <%= @curso.nombre %> 
+  <strong>Clave: </strong><%= @curso.codma %>
 </p>
 
 <p>
@@ -10,6 +11,7 @@
 	<% @alumnos.each do |a| %>
 	<li><%= a.matricula %>  <%= a.nombre %></li>
 	<%end%>
+	<%= link_to "Agregar alumno a esta maetria", new_materia_alumno_path(@curso.nombre) %>
 </p>
 
   <strong>Requerimiento:</strong>
