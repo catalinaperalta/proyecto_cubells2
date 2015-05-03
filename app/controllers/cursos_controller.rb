@@ -11,6 +11,7 @@ class CursosController < ApplicationController
   # GET /cursos/1
   # GET /cursos/1.json
   def show
+    @director = Director.select("directors.*").joins("JOIN carreras ON carreras.id_director = directors.id JOIN materia_carreras ON materia_carreras.carrera_id = carreras.id").where("materia_carreras.materia_id = ?", params[:id]).first
     @curso = Curso.find(params[:id])
     @alumnos = Alumno.select("alumnos.*").joins("JOIN materia_alumnos ON materia_alumnos.alumno_id = alumnos.id").where("materia_alumnos.materia_id = ?", params[:id])
   end

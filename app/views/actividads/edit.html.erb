@@ -108,7 +108,35 @@
 
                 <!-- /.row -->
 
-                <%= render 'form' %>
+                 <%= form_for(@actividad) do |f| %>
+  <% if @actividad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
+
+      <ul>
+      <% @actividad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <div class="field">
+    <%= f.label :ponderacion %><br>
+    <%= f.text_field :ponderacion %>
+  </div>
+  <div>
+    <%= f.label :calificacion %><br>
+    <%= f.text_field :calificacion %>
+  </div>
+<p>
+  <div class="actions">
+    <%= f.submit "Ingresar" %>
+  </div>
+</p>
+<% end %>
+
                     
                 </div>
                 <!-- /.row -->
