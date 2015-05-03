@@ -13,13 +13,24 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br>
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
     <%= f.label :ponderacion %><br>
     <%= f.text_field :ponderacion %>
   </div>
-  <div class="field">
-    <%= f.label :calificacion %><br>
-    <%= f.number_field :calificacion %>
+  <div>
+  Parcial 1 <%= radio_button_tag(:numero, 1) %>
   </div>
+  <div>
+  Parcial 2 <%= radio_button_tag(:numero, 2) %>
+  </div>
+
   <div class="actions">
     <%= f.submit "Ingresar" %>
   </div>

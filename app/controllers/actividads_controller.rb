@@ -13,6 +13,12 @@ class ActividadsController < ApplicationController
   def show
   end
 
+  def agregar
+    poner_materia params[:id]
+    @actividad = Actividad.new
+
+  end
+
   # GET /actividads/new
   def new
     @actividad = Actividad.new
@@ -26,17 +32,15 @@ class ActividadsController < ApplicationController
   # POST /actividads
   # POST /actividads.json
   def create
-    @actividad = Actividad.new(actividad_params)
+    @parcials = Parcial.select("parcials.*").joins("JOIN materia_alumnos ON parcials.id_materia_alumno = materia_alumnos.id JOIN cursos ON cursos.id = materia_alumnos.materia_id").where("cursos.id = ? AND parcials.numero = ?", current_materia.id, params[:numero])
 
-    respond_to do |format|
-      if @actividad.save
-        format.html { redirect_to @actividad, notice: 'Se genero la actividad.' }
-        format.json { render :show, status: :created, location: @actividad }
-      else
-        format.html { render :new }
-        format.json { render json: @actividad.errors, status: :unprocessable_entity }
-      end
+    @parcials.each do |c|
+      params[:actividad][:id_parcial] = c.id
+      params[:actividad][:calificacion] = 0
+      @actividad = Actividad.new(actividad_params)
+      @actividad.save
     end
+    redirect_to current_profesor and return
   end
 
   # PATCH/PUT /actividads/1

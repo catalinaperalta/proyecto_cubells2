@@ -48,4 +48,12 @@ module SessionsHelper
 		@current_alumno = nil
 		@current_profesor = nil
 	end
+
+	def poner_materia id
+		session[:id_ma] = id
+	end
+
+	def current_materia
+		@current_materia = Curso.find_by(id: session[:id_ma])
+	end
 end

@@ -36,6 +36,11 @@ class ProfesorsController < ApplicationController
     @profesor = Profesor.new
   end
 
+  def crear_actividad
+    @materia = Curso.find(params[:id])
+    @alumnos = MateriaAlumno.select("materia_alumnos.id").where("materia_alumnos.materia_id = ?", params[:id])
+  end
+
   # GET /profesors/1/edit
   def edit
   end

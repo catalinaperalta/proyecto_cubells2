@@ -20,6 +20,7 @@ Rails.application.routes.draw do
 
   get 'profesors/listaact/:id' => 'profesors#listaact', :as => :profesors_listaact
   get 'profesors/listaal/:id' => 'profesors#listaal', :as => :profesors_listaal
+  get 'actividads/agregar/:id' => 'actividads#agregar', :as => :actividads_agregar
 
   resources :cursos
 
