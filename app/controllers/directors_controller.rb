@@ -13,7 +13,7 @@ class DirectorsController < ApplicationController
   def show
     @director = Director.find(params[:id])
     #@numero_alumnos = Alumno.count(:conditions => ["carrera.id_director = ?", params[:id]], :joins => "JOIN carreras ON carreras.id = alumnos.id_carrera")
-    @numero_alumnos = Alumno.count("*").joins("JOIN carreras ON carreras.id = alumnos.id_carrera").where("carreras.id_director = ?", current_director.id).count
+    @numero_alumnos = Alumno.select("*").joins("JOIN carreras ON carreras.id = alumnos.id_carrera").where("carreras.id_director = ?", current_director.id).count
     @numero_materias = Curso.select("*").joins("JOIN materia_carreras ON cursos.id = materia_carreras.materia_id JOIN carreras ON materia_carreras.carrera_id = carreras.id").where("carreras.id_director = ?", current_director.id).count
   end
 
