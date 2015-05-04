@@ -12,9 +12,8 @@ class DirectorsController < ApplicationController
   # GET /directors/1.json
   def show
     @director = Director.find(params[:id])
-    @numero_alumnos = Alumno.count(:conditions => ["carrera.id_director = ?", params[:id]], :joins => "JOIN carreras ON carreras.id = alumnos.id_carrera")
-    #@numero_materias = MateriaCarrera.count(:joins => "JOIN carreras ON carreras.id = materia_carreras.carrera_id", :conditions => ["carreras.id_director = ?", params[:id]])
-    #@numero_materias = Curso.count(:join => "JOIN materia_carreras ON cursos.id = materia_carreras.materia_id JOIN carreras ON materia_carreras.carrera_id = carreras.id", :conditions => ["carreras.id_director = ?", params[:id]])
+    #@numero_alumnos = Alumno.count(:conditions => ["carrera.id_director = ?", params[:id]], :joins => "JOIN carreras ON carreras.id = alumnos.id_carrera")
+    @numero_alumnos = Alumno.count("*").joins("JOIN carreras ON carreras.id = alumnos.id_carrera").where("carreras.id_director = ?", current_director.id).count
     @numero_materias = Curso.select("*").joins("JOIN materia_carreras ON cursos.id = materia_carreras.materia_id JOIN carreras ON materia_carreras.carrera_id = carreras.id").where("carreras.id_director = ?", current_director.id).count
   end
 
