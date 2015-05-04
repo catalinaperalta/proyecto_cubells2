@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Universidad de Veracruz</a>
+                <a class="navbar-brand">Gestalt</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -127,14 +127,13 @@
                                                 <% @alumnos.each do |alumno| %>
                                                 <tr>
                                                 <td> <%= link_to alumno.matricula, profesors_listaact_path(alumno.ma_id)%></td>
-                                                <td> <%= alumno.nombre %></td>
+                                                <td> <%= alumno.nombre %> <%= alumno.apellido_p %> <%= alumno.apellido_m %></td>
                                                 </tr>
                                                 <% end %>
                                           </tbody>
                                     </table>
                                 </div>
                                 <%= link_to "Agregar actividad", actividads_agregar_path(@materia.id)%>
-                                <%= link_to "Borrar actividad", profesors_borrarActividad_path(@materia.id) %>
                                 
  <!--
                                 <div class="text-right">

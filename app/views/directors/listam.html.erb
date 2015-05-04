@@ -46,7 +46,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand">Universidad de Veracruz</a>
+                <a class="navbar-brand">Gestalt</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -129,7 +129,7 @@
                                         <tbody>
                                                 <% @materias.each do |materia| %>
                                                 <tr>
-                                                <td> <%= materia.prof_name %></td>
+                                                <td> <%= materia.prof_name %> <%= materia.prof_ap %></td>
                                                 <td> <%= link_to materia.nombre, curso_path(materia.id) %></td>
                                                 <td> <%= materia.codma %></td>
                                                 </tr>

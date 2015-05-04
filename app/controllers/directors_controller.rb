@@ -25,7 +25,7 @@ class DirectorsController < ApplicationController
   def listam
     @director = Director.find(params[:id])
     @carrera = Carrera.find_by id_director: params[:id]
-    @materias = Curso.select("cursos.*, profesors.nombre as prof_name").joins("JOIN materia_carreras ON materia_carreras.materia_id = cursos.id JOIN carreras ON materia_carreras.carrera_id = carreras.id JOIN directors ON directors.id = carreras.id_director JOIN profesors ON profesors.id = cursos.profesor").where("directors.id = ?", params[:id])
+    @materias = Curso.select("cursos.*, profesors.nombre as prof_name, profesors.apellido as prof_ap").joins("JOIN materia_carreras ON materia_carreras.materia_id = cursos.id JOIN carreras ON materia_carreras.carrera_id = carreras.id JOIN directors ON directors.id = carreras.id_director JOIN profesors ON profesors.id = cursos.profesor").where("directors.id = ?", params[:id])
   end
 
   # GET /directors/new
