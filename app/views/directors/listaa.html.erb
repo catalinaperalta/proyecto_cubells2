@@ -148,6 +148,15 @@
                     </div>
                 </div>
 
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ol class="breadcrumb">
+                            <li class="active">
+                                <i class="fa fa-dashboard"></i> Alumnos por fecha de ingreso
+                            </li>
+                        </ol>
+                    </div>
+                </div>
                 <!-- /.row -->
                 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
                 <%= line_chart Alumno.group(:fecha_ingreso).count %>
