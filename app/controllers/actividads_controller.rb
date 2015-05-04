@@ -64,7 +64,7 @@ class ActividadsController < ApplicationController
   def destroy
     @actividad.destroy
     respond_to do |format|
-      format.html { redirect_to actividads_url, notice: 'Se borró exitosamente la actividad.' }
+      format.html { redirect_to current_profesor, notice: 'Se borró exitosamente la actividad.' }
       format.json { head :no_content }
     end
   end
