@@ -159,7 +159,7 @@
                 </div>
                 <!-- /.row -->
                 <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
-                <%= line_chart Alumno.group(:fecha_ingreso).count %>
+                <%= line_chart Alumno.joins(" JOIN carreras ON carreras.id = alumnos.id_carrera").where("carreras.id_director = ?", current_director.id).group(:fecha_ingreso).count %>
 
 
 
