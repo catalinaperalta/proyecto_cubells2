@@ -51,7 +51,7 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li>
-                    <a href="#" class="nav navbar-nav top-nav"><i class="fa fa-user"></i> <%= @profesor.nomina %></a>
+                    <a href="#" class="nav navbar-nav top-nav"><i class="fa fa-user"></i> </a>
  <!--                   
                     <ul class="dropdown-menu">
                         <li>
@@ -77,7 +77,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <%= link_to "Dashboard", profesor_path(@profesor.id)%>
+                        
                     </li>
                     <li class="active">
                         <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Materias <i class="fa fa-fw fa-caret-down"></i></a>
@@ -95,7 +95,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Dashboard <small> <%= @profesor.nombre %> <%= @profesor.apellido %></small>
+                            
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
@@ -108,42 +108,40 @@
 
                 <!-- /.row -->
 
+                 
   
-                    <div class="col-lg-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-money fa-fw"></i> <%= @materia.nombre %></h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Matrícula</th>
-                                                <th>Alumno</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <% @alumnos.each do |alumno| %>
-                                                <tr>
-                                                <td> <%= link_to alumno.matricula, profesors_listaact_path(alumno.ma_id)%></td>
-                                                <td> <%= alumno.nombre %></td>
-                                                </tr>
-                                                <% end %>
-                                          </tbody>
-                                    </table>
-                                </div>
-                                <%= link_to "Agregar actividad", actividads_agregar_path(@materia.id)%>
-                                <%= link_to "Borrar actividad", profesors_borrarActividad_path(@materia.id) %>
-                                
- <!--
-                                <div class="text-right">
-                                    <a href="materiasAlumno">Ver todas las materias <i class="fa fa-arrow-circle-right"></i></a>
-                                </div>
-  -->
-                            </div>
-                        </div>
-                    </div>
+
+  <%= form_for(@profesor), do |f| %>
+  <% if @profesor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profesor.errors.count, "error") %> prohibited this profesor from being saved:</h2>
+
+      <ul>
+      <% @profesor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= label_tag  "Nombre Actividad: " %><br>
+    <%= text_field_tag :actnom, "Nombre Actividad" %>
+  </div>
+  <div>
+  Parcial 1 <%= radio_button_tag(:numero, 1) %>
+  </div>
+  <div>
+  Parcial 2 <%= radio_button_tag(:numero, 2) %>
+  </div>
+<p>
+  <div class="actions">
+    <%= f.submit "Ingresar" %>
+  </div>
+</p>
+<% end %>
+
+                    
                 </div>
                 <!-- /.row -->
 

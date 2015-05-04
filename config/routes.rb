@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   get 'profesors/listaact/:id' => 'profesors#listaact', :as => :profesors_listaact
   get 'profesors/listaal/:id' => 'profesors#listaal', :as => :profesors_listaal
   get 'actividads/agregar/:id' => 'actividads#agregar', :as => :actividads_agregar
-
+  get 'profesors/borrarActividad/:id' => 'profesors#borrarActividad', :as => :profesors_borrarActividad
+  post 'profesors/borrarActividad/:id' => 'profesors#borrarActividad'
+  
   resources :cursos
 
   resources :materia_profesors

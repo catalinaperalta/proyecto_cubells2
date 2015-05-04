@@ -41,6 +41,9 @@ class ProfesorsController < ApplicationController
     @alumnos = MateriaAlumno.select("materia_alumnos.id").where("materia_alumnos.materia_id = ?", params[:id])
   end
 
+  def borrarActividad
+    @profesor = current_profesor
+  end
   # GET /profesors/1/edit
   def edit
   end

@@ -40,7 +40,15 @@ class ActividadsController < ApplicationController
       @actividad = Actividad.new(actividad_params)
       @actividad.save
     end
-    redirect_to current_profesor and return
+    respond_to do |format|
+      if @actividad.save
+        format.html { redirect_to current_profesor }
+      else
+        format.html { render :agregar }
+        format.json { render json: @actividad.errors, status: :unprocessable_entity }
+      end
+    end
+     
   end
 
   # PATCH/PUT /actividads/1
