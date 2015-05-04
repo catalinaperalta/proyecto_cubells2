@@ -147,7 +147,12 @@
                         </div>
                     </div>
                 </div>
+
                 <!-- /.row -->
+                <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+                <%= line_chart Alumno.group(:fecha_ingreso).count %>
+
+
 
             </div>
             <!-- /.container-fluid -->
