@@ -131,29 +131,23 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                                <% @total = 0 %>
-                                                <% @cont = 0 %>
                                                 <% @materia.each do |m| %>
                                                   <% if m.numero == s.numero %>
                                                 <tr>
                                                 <td><%= m.materia %></td>
-                                                <% @avg.each do |p| %>
-                                                <% if p[m.ma_id] != nil %>
-                                                  <% @cont = @cont +1 %>
-                                                  <% @total = @total + p[m.ma_id] %>
-                                                  <%end%>
-                                                    <td><%= p[m.ma_id] %> </td>
+                                                <% @avg = Parcial.joins("JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno").where("materia_alumnos.id = ?", m.ma_id).average(:calificacion); %>
+                                                    <td><%= @avg %></td>
                                                    
                                                 <% end %>
+                                                <%end%>
+
 
                                                 </tr>
                                                 <td><strong>Total: </strong></td>
-                                                <% if @cont == 0 %>
-                                                <% @cont = 1 %>
-                                                <% end %>
-                                                <td><%= @total/@cont %></td>
-                                                  <%end%>
-                                                <% end %>
+                                                <% @total = Parcial.joins("JOIN materia_alumnos ON materia_alumnos.id = parcials.id_materia_alumno JOIN materia_carreras ON materia_carreras.materia_id = materia_alumnos.materia_id").where("materia_alumnos.alumno_id = ? AND materia_carreras.semestre = ?", params[:id], s.numero).average(:calificacion); %>
+                                                <td><%= @total%></td>
+                                                  
+                                                
                                           </tbody>
                                     </table>
 
